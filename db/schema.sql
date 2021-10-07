@@ -5,3 +5,8 @@ CREATE TABLE candidates (
     industry_connected BOOLEAN NOT NULL
 );
 
+CREATE TABLE candidates (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    description TEXT
+);
