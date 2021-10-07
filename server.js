@@ -24,7 +24,11 @@ const db = mysql.createConnection(
 );
 // return all data from candidates route
 app.get('/api/candidates', (req, res) => {
-    const sql = `SELECT * FROM candidates`;
+    const sql = `SELECT candidates.*, parties.name
+                AS party_name
+                FROM candidates
+                LEFT JOIN parties
+                ON candidates.party_id = parties.id`;
     db.query(sql, (err, rows) => {
         if (err) {
             res.status(500).json({ error: err.message});
@@ -39,7 +43,12 @@ app.get('/api/candidates', (req, res) => {
 
 // GET a single candidate
 app.get('/api/candidate/:id', (req, res) => {
-    const sql = `SELECT * FROM candidates WHERE id = ?`;
+    const sql = `SELECT candidates.*, parties.name
+                AS party_name
+                FROM candidates
+                LEFT JOIN parties
+                ON candidates.party_id = parties.id
+                WHERE candidates.id = ?`;
     // database call captured value populated in the req.params object assigned the key id to params
     // params is assigned as an array with a single element, req.params.id
     const params = [req.params.id];
