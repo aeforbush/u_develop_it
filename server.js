@@ -1,9 +1,10 @@
-const mysql = require('mysql2');
 const express = require('express');
+const mysql = require('mysql2');
+const inputCheck = require('./utils/inputCheck');
+
 const PORT = process.env.PORT || 3001;
 const app = express();
-const inputCheck = require('./utils/inputCheck');
-const { isEnumBody } = require('@babel/types');
+
 
 // express middleware
 app.use(express.urlencoded({ extended: false}));
@@ -83,7 +84,7 @@ app.delete('/api/candidate/:id', (req, res) => {
 // using object destructuring to pull the body property out of the request object ({body})= object req.body to populate the candidates data
 app.post('/api/candidate', ({body}, res) => {
     // verification method to avoid creating anything other than a candidate
-    const errors = inputCheck(body, 'first_name', 'last_name', 'industry_connected')
+    const errors = inputCheck(body, 'first_name', 'last_name', 'industry_connected');
     if (errors) {
         res.status(400).json({error: errors});
         return;
