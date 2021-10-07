@@ -1,0 +1,29 @@
+{
+  "name": "u_develop_it",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aeforbush/u_develop_it.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aeforbush/u_develop_it/issues"
+  },
+  "homepage": "https://github.com/aeforbush/u_develop_it#readme",
+  "devDependencies": {
+    "jest": "^27.2.4",
+    "nodemon": "^2.0.13"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^2.3.0"
+  }
+}
